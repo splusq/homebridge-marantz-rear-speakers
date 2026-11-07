@@ -1,0 +1,60 @@
+{
+  "pluginAlias": "MarantzRearSpeakers",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Plays HEOS Music and Spotify Connect on the surround speakers only, by switching the receiver to Speaker Preset 2 while that input is active. Set up Preset 2 on the receiver first (see the README).",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Switch name",
+        "type": "string",
+        "default": "Rear Speakers",
+        "required": true
+      },
+      "host": {
+        "title": "Receiver IP address or hostname",
+        "type": "string",
+        "placeholder": "192.168.1.136",
+        "required": true
+      },
+      "port": {
+        "title": "Telnet port",
+        "type": "integer",
+        "default": 23,
+        "minimum": 1,
+        "maximum": 65535
+      },
+      "inputs": {
+        "title": "Inputs that use the rear speakers",
+        "description": "Receiver input codes. NET is HEOS Music, which Spotify Connect and AirPlay use.",
+        "type": "array",
+        "default": ["NET"],
+        "items": {
+          "type": "string",
+          "title": "Input code"
+        }
+      },
+      "soundMode": {
+        "title": "Sound mode while on the rear speakers",
+        "description": "Multi Ch Stereo sends stereo to every active speaker. Leave empty to keep whatever mode the receiver picks.",
+        "type": "string",
+        "default": "MCH STEREO",
+        "oneOf": [
+          { "title": "Multi Ch Stereo", "enum": ["MCH STEREO"] },
+          { "title": "Leave unchanged", "enum": [""] }
+        ]
+      }
+    }
+  },
+  "layout": [
+    "name",
+    "host",
+    {
+      "type": "fieldset",
+      "title": "Advanced",
+      "expandable": true,
+      "items": ["port", "inputs", "soundMode"]
+    }
+  ]
+}

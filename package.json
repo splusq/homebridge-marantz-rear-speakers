@@ -1,0 +1,50 @@
+{
+  "name": "homebridge-marantz-rear-speakers",
+  "displayName": "Marantz Rear Speakers",
+  "version": "0.1.0",
+  "description": "Plays HEOS Music and Spotify Connect on a Marantz or Denon receiver's surround speakers only by switching Speaker Preset as the input changes, with a HomeKit switch to turn it on or off.",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "config.schema.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "homebridge": "^1.8.0 || ^2.0.0",
+    "node": "^20.18.0 || ^22.10.0 || ^24.0.0"
+  },
+  "author": "Salman Quazi",
+  "license": "MIT",
+  "keywords": [
+    "homebridge-plugin",
+    "marantz",
+    "denon",
+    "heos",
+    "spotify",
+    "speaker-preset",
+    "avr"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/splusq/homebridge-marantz-rear-speakers.git"
+  },
+  "homepage": "https://github.com/splusq/homebridge-marantz-rear-speakers#readme",
+  "bugs": {
+    "url": "https://github.com/splusq/homebridge-marantz-rear-speakers/issues"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts",
+    "mock": "node test/mock-avr.ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "homebridge": "^2.5.0",
+    "typescript": "^7.0.2"
+  }
+}
